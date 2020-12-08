@@ -33,6 +33,7 @@ I will be adding to these as I go along.
  - SetAttribute: Set a UsdAttribute with the name given.
  - SetDefaultPrim: Set the DefaultPrim of a stage.
  - GetDefaultPrim: Get the DefaultPrim of a stage.
+ - AbsoluteRoot: Get the root path of a stage.
 
 ### pxr_usd_geom
 
