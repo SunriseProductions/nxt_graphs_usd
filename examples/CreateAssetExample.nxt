@@ -1,0 +1,10 @@
+{
+    "version": "1.17",
+    "alias": "CreateAssetExample",
+    "color": "#00a5e6",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "E:/Sandbox/nxt_graphs_usd/graphs/pxr_usd_tools.nxt"
+    ]
+}
