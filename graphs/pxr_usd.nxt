@@ -26,6 +26,18 @@
                 0,
                 301
             ],
+            "/GetStageAxis": [
+                176.07807637024928,
+                1087.5410599338925
+            ],
+            "/GetStageMetersPerUnit": [
+                174.35182071956055,
+                1122.066172947667
+            ],
+            "/HasStageMetersPerUnit": [
+                264.1171145553739,
+                1377.5520092495972
+            ],
             "/OpenOrFind": [
                 108.26898100675972,
                 835.8831006758438
@@ -46,6 +58,14 @@
                 0,
                 672
             ],
+            "/SetStageAxis": [
+                149.17761768703826,
+                909.2730982828999
+            ],
+            "/SetStageMetersPerUnit": [
+                163.99428681542824,
+                1256.7141137013869
+            ],
             "/StageOpen": [
                 419.91544716718283,
                 63.43403563589358
@@ -65,7 +85,12 @@
                 "StageOpen",
                 "GetDefaultPrim",
                 "OpenOrFind",
-                "RootPath"
+                "RootPath",
+                "SetStageAxis",
+                "GetStageAxis",
+                "GetStageMetersPerUnit",
+                "SetStageMetersPerUnit",
+                "HasStageMetersPerUnit"
             ],
             "code": [
                 "from pxr import Usd, Sdf, UsdGeom"
@@ -169,6 +194,33 @@
                 "# print(property_names)"
             ]
         },
+        "/GetStageAxis": {
+            "attrs": {
+                "stage": {},
+                "stage_axis": {}
+            },
+            "code": [
+                "self.stage_axis = UsdGeom.GetStageUpAxis(self.stage)"
+            ]
+        },
+        "/GetStageMetersPerUnit": {
+            "attrs": {
+                "stage": {},
+                "stage_units": {}
+            },
+            "code": [
+                "self.stage_units = UsdGeom.GetStageMetersPerUnit(self.stage)"
+            ]
+        },
+        "/HasStageMetersPerUnit": {
+            "attrs": {
+                "stage": {},
+                "stage_has_units": {}
+            },
+            "code": [
+                "self.stage_has_units = UsdGeom.HasAuthoredMetersPerUnit(self.stage)"
+            ]
+        },
         "/OpenOrFind": {
             "attrs": {
                 "directory": {
@@ -265,6 +317,32 @@
             },
             "code": [
                 "self.stage.SetDefaultPrim('${name}')"
+            ]
+        },
+        "/SetStageAxis": {
+            "attrs": {
+                "axis": {
+                    "type": "raw",
+                    "value": "y"
+                },
+                "stage": {},
+                "stage_axis": {}
+            },
+            "code": [
+                "self.stage_axis = UsdGeom.SetStageUpAxis(self.stage, UsdGeom.Tokens.${axis})"
+            ]
+        },
+        "/SetStageMetersPerUnit": {
+            "attrs": {
+                "meters": {
+                    "type": "float",
+                    "value": "0.01"
+                },
+                "stage": {},
+                "stage_units": {}
+            },
+            "code": [
+                "self.stage_units = UsdGeom.SetStageMetersPerUnit(self.stage, ${meters})"
             ]
         },
         "/StageOpen": {
