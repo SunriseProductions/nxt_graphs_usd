@@ -13,6 +13,18 @@
                 1192.0790030763435,
                 -258.39377868928705
             ],
+            "/GetStageAxis": [
+                29.346346061708232,
+                1008.1333000022116
+            ],
+            "/GetStageMetersPerUnit": [
+                25.893834760330776,
+                1125.5186842490443
+            ],
+            "/HasStageMetersPerUnit": [
+                18.98881215757592,
+                1299.870504968605
+            ],
             "/InheriteClass2": [
                 1190.7442986274689,
                 -133.62907553193833
@@ -24,12 +36,22 @@
             "/RootPath2": [
                 1022.2266118192704,
                 -271.6789256124233
+            ],
+            "/SetStageAxis": [
+                26.046885627895563,
+                906.9051995894548
+            ],
+            "/SetStageMetersPerUnit": [
+                24.167579109642077,
+                1220.462745036924
             ]
         },
         "collapse": {
             "/GetDefaultPrim": true,
             "/OpenOrFind_hello/StageOpen_hello/Sphere_world/RootPath2": false,
-            "/RootPath": true
+            "/RootPath": true,
+            "/SetStageAxis_pasted": true,
+            "/node": true
         }
     },
     "nodes": {
