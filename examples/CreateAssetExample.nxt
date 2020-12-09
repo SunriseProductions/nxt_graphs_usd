@@ -6,5 +6,232 @@
     "solo": false,
     "references": [
         "E:/Sandbox/nxt_graphs_usd/graphs/pxr_usd_tools.nxt"
-    ]
+    ],
+    "meta_data": {
+        "positions": {
+            "/DefinePrim2": [
+                842.479470180486,
+                -602.015609158985
+            ],
+            "/ModelApi2": [
+                756.623856795634,
+                -346.18969713178035
+            ],
+            "/OpenOrFind_assetCreate": [
+                446.4104156358137,
+                -742.7274258854442
+            ],
+            "/OpenOrFind_ref2": [
+                1091.582013999664,
+                -394.4410295783035
+            ],
+            "/RootLayerSave": [
+                25.24875188315214,
+                151.68431601807907
+            ],
+            "/RootLayerSave2": [
+                774.3856248476116,
+                -807.8447325515372
+            ],
+            "/SetAssetIdentifier2": [
+                934.411897393996,
+                -345.4830246303077
+            ],
+            "/SetAssetName2": [
+                929.2648024389398,
+                -442.4199796171994
+            ],
+            "/SetDefaultPrim2": [
+                814.6228970897646,
+                -707.2515519461544
+            ],
+            "/SetKind2": [
+                932.485096689882,
+                -181.64625980498397
+            ],
+            "/SetStageAxis2": [
+                537.5876872568634,
+                -329.96814111480387
+            ],
+            "/StageOpen2": [
+                428.99427919212985,
+                -356.9028357859937
+            ],
+            "/UsdView2": [
+                44.17740639708154,
+                -540.9372197069207
+            ]
+        },
+        "collapse": {
+            "/OpenOrFind_assetCreate": false,
+            "/OpenOrFind_assetCreate/StageOpen_assetCreate": false,
+            "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate": false,
+            "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/ModelApi_assetCreate": true,
+            "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/OpenOrFind_ref2": false,
+            "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/OpenOrFind_ref2/StageOpen_ref": false
+        }
+    },
+    "nodes": {
+        "/": {
+            "child_order": [
+                "DefinePrim2",
+                "SetDefaultPrim2",
+                "SetStageAxis2",
+                "OpenOrFind_assetCreate",
+                "RootLayerSave2",
+                "ModelApi2",
+                "SetKind2",
+                "SetAssetName2",
+                "SetAssetIdentifier2",
+                "OpenOrFind_ref2",
+                "UsdView2"
+            ],
+            "attrs": {
+                "USD_file": {
+                    "type": "raw",
+                    "value": "${path::}/tests/foo.usda"
+                }
+            }
+        },
+        "/OpenOrFind_assetCreate": {
+            "start_point": true,
+            "instance": "/OpenOrFind",
+            "child_order": [
+                "StageOpen_assetCreate"
+            ],
+            "attrs": {
+                "name": {
+                    "value": "foo"
+                },
+                "path": {
+                    "type": "raw",
+                    "value": "${path::}/tests/"
+                }
+            }
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate": {
+            "instance": "/StageOpen",
+            "child_order": [
+                "DefinePrim_assetCreate",
+                "SetStageAxis2",
+                "RootLayerSave2"
+            ]
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate": {
+            "instance": "/DefinePrim",
+            "child_order": [
+                "SetDefaultPrim_assetCreate",
+                "ModelApi_assetCreate",
+                "OpenOrFind_ref2"
+            ],
+            "attrs": {
+                "prim_name": {
+                    "value": "/${name}"
+                }
+            },
+            "code": [
+                "self.prim = self.stage.DefinePrim('${prim_name}', '${type_usdgeom}').GetPrim()"
+            ]
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/ModelApi_assetCreate": {
+            "instance": "/ModelApi",
+            "child_order": [
+                "SetKind_assetCreate",
+                "SetAssetName2",
+                "SetAssetIdentifier2"
+            ]
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/ModelApi_assetCreate/SetAssetIdentifier2": {
+            "instance": "/SetAssetIdentifier",
+            "attrs": {
+                "asset_identifier": {
+                    "value": "${directory}"
+                }
+            }
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/ModelApi_assetCreate/SetAssetName2": {
+            "instance": "/SetAssetName",
+            "attrs": {
+                "asset_name": {
+                    "value": "${name}"
+                }
+            }
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/ModelApi_assetCreate/SetKind_assetCreate": {
+            "instance": "/SetKind"
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/OpenOrFind_ref2": {
+            "instance": "/OpenOrFind_ref",
+            "child_order": [
+                "StageOpen_ref"
+            ],
+            "attrs": {
+                "name": {
+                    "value": "shadingVariants"
+                },
+                "prim_name": {
+                    "value": "/foo"
+                }
+            }
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/OpenOrFind_ref2/StageOpen_ref": {
+            "child_order": [
+                "SetDefaultPrim2",
+                "DefinePrim2",
+                "RootLayerSave2",
+                "AddReference"
+            ],
+            "code": [
+                "self.ref_stage = Usd.Stage.Open(self.reference_layer)"
+            ]
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/OpenOrFind_ref2/StageOpen_ref/AddReference": {
+            "code": [
+                "print(self.ref_stage.GetRootLayer().identifier)",
+                "print(self.prim.GetPath())",
+                "self.reference = self.prim.GetReferences().AddReference(assetPath=self.ref_stage.GetRootLayer().identifier,",
+                "                                                        primPath=self.prim.GetPath(),",
+                "                                                        position=Usd.ListPosition${position}OfPrependList)"
+            ]
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/OpenOrFind_ref2/StageOpen_ref/DefinePrim2": {
+            "instance": "/DefinePrim",
+            "attrs": {
+                "type_usdgeom": {
+                    "value": "Sphere"
+                }
+            },
+            "code": [
+                "self.prim = self.ref_stage.DefinePrim('${prim_name}', '${type_usdgeom}')"
+            ]
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/OpenOrFind_ref2/StageOpen_ref/RootLayerSave2": {
+            "instance": "/RootLayerSave",
+            "code": [
+                "self.ref_stage.GetRootLayer().Save()"
+            ]
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/OpenOrFind_ref2/StageOpen_ref/SetDefaultPrim2": {
+            "instance": "/SetDefaultPrim",
+            "code": [
+                "self.ref_stage.SetDefaultPrim(self.prim)"
+            ]
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/DefinePrim_assetCreate/SetDefaultPrim_assetCreate": {
+            "instance": "/SetDefaultPrim",
+            "code": [
+                "self.stage.SetDefaultPrim(self.prim)"
+            ]
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/RootLayerSave2": {
+            "instance": "/RootLayerSave"
+        },
+        "/OpenOrFind_assetCreate/StageOpen_assetCreate/SetStageAxis2": {
+            "instance": "/SetStageAxis"
+        },
+        "/UsdView2": {
+            "start_point": true,
+            "instance": "/UsdView"
+        }
+    }
 }

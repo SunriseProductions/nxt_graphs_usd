@@ -45,6 +45,14 @@
                 666.3387862672446,
                 -161.2852190950404
             ],
+            "/SetAssetIdentifier2": [
+                1051.8259641552943,
+                -441.2784434941371
+            ],
+            "/SetAssetName2": [
+                911.0001337639114,
+                -284.79011940481166
+            ],
             "/SetKind2": [
                 635.2362050691274,
                 -173.30521226549183
@@ -65,6 +73,10 @@
                 581.6207534652629,
                 -341.3083311370056
             ],
+            "/UsdCat2": [
+                37.953341672143154,
+                -318.490889460108
+            ],
             "/UsdView2": [
                 28.722861447313676,
                 -411.45441949400447
@@ -76,7 +88,8 @@
             "/OpenOrFind/StageOpen/Sphere": false,
             "/OpenOrFind2/StageOpen3": false,
             "/OpenOrFind2/StageOpen3/DefinePrim2": false,
-            "/OpenOrFind2/StageOpen3/DefinePrim2/ModelApi2": false
+            "/OpenOrFind2/StageOpen3/DefinePrim2/ModelApi2": false,
+            "/OpenOrFind2/StageOpen3/DefinePrim2/ModelApi2/SetAssetName2": true
         }
     },
     "nodes": {
@@ -93,7 +106,10 @@
                 "DefinePrim2",
                 "SetKind2",
                 "RootLayerSave2",
-                "UsdView2"
+                "UsdView2",
+                "SetAssetName2",
+                "SetAssetIdentifier2",
+                "UsdCat2"
             ],
             "attrs": {
                 "USD_file": {
@@ -141,7 +157,28 @@
         "/OpenOrFind2/StageOpen3/DefinePrim2/ModelApi2": {
             "instance": "/ModelApi",
             "child_order": [
-                "SetKind2"
+                "SetKind2",
+                "SetAssetName2",
+                "SetAssetIdentifier2"
+            ]
+        },
+        "/OpenOrFind2/StageOpen3/DefinePrim2/ModelApi2/SetAssetIdentifier2": {
+            "instance": "/SetAssetIdentifier",
+            "attrs": {
+                "asset_identifier": {
+                    "value": "${directory}"
+                }
+            }
+        },
+        "/OpenOrFind2/StageOpen3/DefinePrim2/ModelApi2/SetAssetName2": {
+            "instance": "/SetAssetName",
+            "attrs": {
+                "asset_name": {
+                    "value": "SphereNew"
+                }
+            },
+            "code": [
+                "self.model.SetAssetName('${asset_name}')"
             ]
         },
         "/OpenOrFind2/StageOpen3/DefinePrim2/ModelApi2/SetKind2": {
@@ -149,6 +186,9 @@
         },
         "/OpenOrFind2/StageOpen3/RootLayerSave2": {
             "instance": "/RootLayerSave"
+        },
+        "/UsdCat2": {
+            "instance": "/UsdCat"
         },
         "/UsdView2": {
             "instance": "/UsdView"
