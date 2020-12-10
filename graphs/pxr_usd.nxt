@@ -69,6 +69,10 @@
             "/StageOpen": [
                 419.91544716718283,
                 63.43403563589358
+            ],
+            "/print_stage": [
+                207.69647210388652,
+                1417.82880956868
             ]
         }
     },
@@ -90,7 +94,8 @@
                 "GetStageAxis",
                 "GetStageMetersPerUnit",
                 "SetStageMetersPerUnit",
-                "HasStageMetersPerUnit"
+                "HasStageMetersPerUnit",
+                "print_stage"
             ],
             "code": [
                 "from pxr import Usd, Sdf, UsdGeom"
@@ -316,7 +321,7 @@
                 }
             },
             "code": [
-                "self.stage.SetDefaultPrim('${name}')"
+                "self.stage.SetDefaultPrim(self.prim)"
             ]
         },
         "/SetStageAxis": {
@@ -374,6 +379,11 @@
             },
             "code": [
                 "self.stage = Usd.Stage.Open(self.root_layer)"
+            ]
+        },
+        "/print_stage": {
+            "code": [
+                "print(self.stage.GetRootLayer().ExportToString())"
             ]
         }
     }
