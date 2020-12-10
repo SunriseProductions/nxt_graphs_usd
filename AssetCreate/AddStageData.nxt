@@ -1,0 +1,53 @@
+{
+    "version": "1.17",
+    "alias": "AddStageData",
+    "color": "#99cc33",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "E:/Sandbox/nxt_graphs_usd/AssetCreate/OpenAssetStage.nxt"
+    ],
+    "meta_data": {
+        "positions": {
+            "/CreateClass2": [
+                916.0354791139604,
+                -1104.3255229791614
+            ],
+            "/RootLayerSave2": [
+                734.1921853712703,
+                -161.21222741155546
+            ],
+            "/RootLayerSave_CreateAsset": [
+                556.6329027819588,
+                -204.0051798136837
+            ],
+            "/RootPath2": [
+                320,
+                0
+            ],
+            "/SetStageAxis2": [
+                759.7070785693213,
+                -207.96956418819252
+            ],
+            "/SetStageMetersPerUnit2": [
+                320,
+                0
+            ],
+            "/print_stage": [
+                39.479494697432926,
+                1385.2153139490615
+            ]
+        },
+        "collapse": {
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": false
+        }
+    },
+    "nodes": {
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageAxis_CreateAsset": {
+            "instance": "/SetStageAxis"
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageMetersPerUnit2": {
+            "instance": "/SetStageMetersPerUnit"
+        }
+    }
+}

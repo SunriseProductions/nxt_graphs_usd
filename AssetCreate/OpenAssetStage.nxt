@@ -1,0 +1,57 @@
+{
+    "version": "1.17",
+    "alias": "OpenAssetStage",
+    "color": "#00a5e6",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "E:/Sandbox/nxt_graphs_usd/graphs/pxr_usd_tools.nxt"
+    ],
+    "meta_data": {
+        "positions": {
+            "/OpenOrFind_CreateAsset": [
+                502.95387397536354,
+                -374.1087171901494
+            ],
+            "/StageOpen_CreateAsset": [
+                431.93258833502614,
+                -410.94248206457667
+            ]
+        },
+        "collapse": {
+            "/OpenOrFind_CreateAsset": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": false
+        }
+    },
+    "nodes": {
+        "/": {
+            "child_order": [
+                "OpenOrFind_CreateAsset"
+            ],
+            "attrs": {
+                "USD_file": {
+                    "type": "raw",
+                    "value": "${path::}/foo.usda"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset": {
+            "instance": "/OpenOrFind",
+            "child_order": [
+                "StageOpen_CreateAsset"
+            ],
+            "attrs": {
+                "name": {
+                    "value": "foo"
+                },
+                "path": {
+                    "type": "raw",
+                    "value": "${path::}/"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": {
+            "instance": "/StageOpen"
+        }
+    }
+}

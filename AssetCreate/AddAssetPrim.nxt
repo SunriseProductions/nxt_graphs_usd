@@ -1,0 +1,174 @@
+{
+    "version": "1.17",
+    "alias": "AddAssetPrim",
+    "color": "#f38b00",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "E:/Sandbox/nxt_graphs_usd/AssetCreate/AddStageData.nxt"
+    ],
+    "meta_data": {
+        "positions": {
+            "/CreateClass2": [
+                916.0354791139604,
+                -1104.3255229791614
+            ],
+            "/DefinePrim_CreateAsset": [
+                916.0354791139604,
+                -1104.3255229791614
+            ],
+            "/InheriteClass2": [
+                916.0354791139604,
+                -1104.3255229791614
+            ],
+            "/ModelApi2": [
+                852.6255612798552,
+                -207.8671342394979
+            ],
+            "/OpenOrFind_CreateAsset": [
+                551.3576333678313,
+                -743.27521712158
+            ],
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": [
+                0.0,
+                0.0
+            ],
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageAxis_CreateAsset": [
+                0.0,
+                0.0
+            ],
+            "/OpenOrFind_Payload2": [
+                1128.8015157978957,
+                -549.0737050909659
+            ],
+            "/RootPath2": [
+                320,
+                0
+            ],
+            "/RootPath_CreateAsset": [
+                916.0354791139604,
+                -1104.3255229791614
+            ],
+            "/SetAssetIdentifier2": [
+                927.1854016212692,
+                -376.95820072806174
+            ],
+            "/SetAssetName2": [
+                942.4967974056665,
+                -327.029736213722
+            ],
+            "/SetAssetVersion2": [
+                903.2197386543863,
+                -151.28154112324617
+            ],
+            "/SetDefaultPrim2": [
+                320,
+                0
+            ],
+            "/SetKind2": [
+                896.5626100524744,
+                -258.46131161402866
+            ],
+            "/SetStageMetersPerUnit2": [
+                604.4794884049672,
+                -551.83863581077
+            ],
+            "/print_stage2": [
+                916.0354791139604,
+                -1104.3255229791614
+            ]
+        },
+        "collapse": {
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/ModelApi2": true
+        }
+    },
+    "nodes": {
+        "/OpenOrFind_CreateAsset": {
+            "start_point": true
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset": {
+            "instance": "/DefinePrim",
+            "child_order": [
+                "ModelApi2",
+                "SetDefaultPrim2",
+                "RootPath_CreateAsset"
+            ],
+            "attrs": {
+                "prim_name": {
+                    "type": "raw",
+                    "value": "/${name}"
+                },
+                "type_usdgeom": {
+                    "type": "raw",
+                    "value": "Xform"
+                }
+            },
+            "code": [
+                "self.prim = self.stage.DefinePrim('${prim_name}', '${type_usdgeom}').GetPrim()"
+            ]
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/ModelApi2": {
+            "instance": "/ModelApi",
+            "child_order": [
+                "SetKind2",
+                "SetAssetName2",
+                "SetAssetIdentifier2",
+                "SetAssetVersion2"
+            ]
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/ModelApi2/SetAssetIdentifier2": {
+            "instance": "/SetAssetIdentifier",
+            "attrs": {
+                "asset_identifier": {
+                    "type": "raw",
+                    "value": "${directory}"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/ModelApi2/SetAssetName2": {
+            "instance": "/SetAssetName",
+            "attrs": {
+                "asset_name": {
+                    "value": "${name}"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/ModelApi2/SetAssetVersion2": {
+            "instance": "/SetAssetVersion"
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/ModelApi2/SetKind2": {
+            "instance": "/SetKind",
+            "attrs": {
+                "kind": {
+                    "value": "Kind.Tokens.assembly"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/RootPath_CreateAsset": {
+            "instance": "/RootPath",
+            "child_order": [
+                "CreateClass2"
+            ]
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/RootPath_CreateAsset/CreateClass2": {
+            "instance": "/CreateClass",
+            "child_order": [
+                "InheriteClass2"
+            ],
+            "attrs": {
+                "class_name": {
+                    "value": "_class_${name}"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/RootPath_CreateAsset/CreateClass2/InheriteClass2": {
+            "instance": "/InheriteClass"
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/SetDefaultPrim2": {
+            "instance": "/SetDefaultPrim"
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageMetersPerUnit2/print_stage2": {
+            "instance": "/print_stage"
+        }
+    }
+}
