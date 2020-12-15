@@ -9,13 +9,17 @@
     ],
     "meta_data": {
         "positions": {
+            "/AssetCreateDocumentation": [
+                280,
+                20
+            ],
             "/CreateClass2": [
                 916.0354791139604,
                 -1104.3255229791614
             ],
             "/RootLayerSave2": [
-                734.1921853712703,
-                -161.21222741155546
+                907.3843908057692,
+                -381.9173387617135
             ],
             "/RootLayerSave_CreateAsset": [
                 556.6329027819588,
@@ -33,12 +37,17 @@
                 320,
                 0
             ],
+            "/node": [
+                723.3423479223977,
+                -149.37313526202357
+            ],
             "/print_stage": [
                 39.479494697432926,
                 1385.2153139490615
             ]
         },
         "collapse": {
+            "/AssetCreateDocumentation": true,
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": false
         }
     },
@@ -46,8 +55,14 @@
         "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageAxis_CreateAsset": {
             "instance": "/SetStageAxis"
         },
-        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageMetersPerUnit2": {
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageMetersPerUnit22": {
             "instance": "/SetStageMetersPerUnit"
+        },
+        "/RootLayerSave2": {
+            "code": [
+                "STAGE.stage.GetRootLayer().Save()",
+                "STAGE.stage = None"
+            ]
         }
     }
 }

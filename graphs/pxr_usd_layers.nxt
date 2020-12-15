@@ -149,6 +149,7 @@
         },
         "/OpenOrFind_Sublayer/StageOpen/AddSublayer": {
             "code": [
+                "self.root_layer.RemoveSubLayerPath(self.sub_stage.GetRootLayer().identifier)",
                 "self.root_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier)"
             ]
         },

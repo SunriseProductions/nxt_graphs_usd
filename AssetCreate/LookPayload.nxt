@@ -5,8 +5,19 @@
     "mute": false,
     "solo": false,
     "references": [
-        "E:/Sandbox/nxt_graphs_usd/AssetCreate/ModelPayload.nxt"
+        "./ModelPayload.nxt"
     ],
+    "comp_overrides": {
+        "./AddAssetPrim.nxt": {
+            "solo": false
+        },
+        "./AddStageData.nxt": {
+            "solo": false
+        },
+        "./ModelPayload.nxt": {
+            "solo": false
+        }
+    },
     "meta_data": {
         "positions": {
             "/CreateClass": [
@@ -34,12 +45,12 @@
                 -1569.3287212564508
             ],
             "/OpenOrFind_Sublayer2": [
-                1051.5576380587054,
-                -918.602867862238
+                1152.6398243046685,
+                -1568.134408506216
             ],
             "/RootLayerSave2": [
-                1115.1541237234276,
-                -491.91889749707525
+                1133.7470765879825,
+                -933.0686195521268
             ],
             "/RootPath2": [
                 998.8286412765094,
@@ -67,9 +78,13 @@
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload": false,
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/AddPayload": false,
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/DefinePrim_model/ModelApi2": true,
-            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/OpenOrFind_Sublayer2": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/OpenOrFind_Sublayer2/StageOpen": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/OpenOrFind_Sublayer2/StageOpen/DefinePrim_model": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/OpenOrFind_Sublayer2/StageOpen/RootLayerSave2": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/RootLayerSave_modelPayLoad": true,
+            "/OpenOrFind_Sublayer2": false,
             "/OpenOrFind_Sublayer2/StageOpen/AddSublayer": true,
-            "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_model": false,
+            "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_model": true,
             "/OpenOrFind_Sublayer2/StageOpen/SetDefaultPrim2": true
         }
     },

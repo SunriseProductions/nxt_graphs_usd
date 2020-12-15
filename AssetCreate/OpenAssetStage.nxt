@@ -5,13 +5,29 @@
     "mute": false,
     "solo": false,
     "references": [
-        "E:/Sandbox/nxt_graphs_usd/graphs/pxr_usd_tools.nxt"
+        "../pxr_usd_tools.nxt"
     ],
     "meta_data": {
         "positions": {
+            "/OpenOrFind2": [
+                320,
+                0
+            ],
             "/OpenOrFind_CreateAsset": [
-                502.95387397536354,
-                -374.1087171901494
+                481.6146666218417,
+                -375.1784072774756
+            ],
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": [
+                0.0,
+                0.0
+            ],
+            "/RootLayerSave2": [
+                901.6551198719019,
+                -377.44115613586314
+            ],
+            "/StageOpen2": [
+                320,
+                0
             ],
             "/StageOpen_CreateAsset": [
                 431.93258833502614,
@@ -26,7 +42,8 @@
     "nodes": {
         "/": {
             "child_order": [
-                "OpenOrFind_CreateAsset"
+                "OpenOrFind_CreateAsset",
+                "RootLayerSave2"
             ],
             "attrs": {
                 "USD_file": {
@@ -36,12 +53,14 @@
             }
         },
         "/OpenOrFind_CreateAsset": {
+            "start_point": true,
             "instance": "/OpenOrFind",
             "child_order": [
                 "StageOpen_CreateAsset"
             ],
             "attrs": {
                 "name": {
+                    "type": "raw",
                     "value": "foo"
                 },
                 "path": {
@@ -51,7 +70,19 @@
             }
         },
         "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": {
-            "instance": "/StageOpen"
+            "instance": "/StageOpen",
+            "code": [
+                "self.stage = Usd.Stage.Open(self.root_layer)",
+                "STAGE.stage = self.stage"
+            ]
+        },
+        "/RootLayerSave2": {
+            "instance": "/RootLayerSave",
+            "execute_in": "/OpenOrFind_CreateAsset",
+            "code": [
+                "STAGE.stage.GetRootLayer().Save()",
+                "STAGE.stage = None"
+            ]
         }
     }
 }
