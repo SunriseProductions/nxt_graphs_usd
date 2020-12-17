@@ -1,0 +1,32 @@
+{
+    "version": "1.17",
+    "alias": "pxr_usd_helpers",
+    "color": "#00a5e6",
+    "mute": false,
+    "solo": false,
+    "meta_data": {
+        "positions": {
+            "/node": [
+                2982.850671172257,
+                -33.181594117255784
+            ]
+        }
+    },
+    "nodes": {
+        "/node": {
+            "start_point": true,
+            "attrs": {
+                "module": {
+                    "type": "raw",
+                    "value": "Sdf"
+                }
+            },
+            "code": [
+                "list = dir(${module})",
+                "",
+                "for item in list:",
+                "    print(item)"
+            ]
+        }
+    }
+}

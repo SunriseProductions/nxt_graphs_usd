@@ -5,6 +5,7 @@
     "mute": false,
     "solo": false,
     "references": [
+        "./pxr_usd_helpers.nxt",
         "./pxr_usd_class.nxt",
         "./pxr_usd_layers.nxt",
         "./pxr_usd_model_api.nxt",
@@ -227,6 +228,10 @@
             "/Xform": [
                 882.1966463622368,
                 494.3560287593916
+            ],
+            "/node": [
+                2918.2338826281275,
+                -64.61678854412969
             ],
             "/print_stage": [
                 40.860432008890996,
