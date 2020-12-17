@@ -41,16 +41,16 @@
                 -915.0759703987646
             ],
             "/OpenOrFind_CreateAsset": [
-                627.9542287347074,
-                -1569.3287212564508
+                621.7871409613186,
+                -1563.161633483062
             ],
             "/OpenOrFind_Sublayer2": [
-                1152.6398243046685,
-                -1568.134408506216
+                1184.7768692115294,
+                -1534.5932229395041
             ],
             "/RootLayerSave2": [
-                1133.7470765879825,
-                -933.0686195521268
+                1888.815312140359,
+                -1569.3324124476603
             ],
             "/RootPath2": [
                 998.8286412765094,
@@ -71,7 +71,7 @@
         },
         "collapse": {
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset": false,
-            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look": false,
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look/StageOpen_Payload": false,
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look/StageOpen_Payload/DefinePrim_model/ModelApi2/SetKind2": true,
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model": false,

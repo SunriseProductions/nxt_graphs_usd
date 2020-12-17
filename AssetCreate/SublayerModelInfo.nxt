@@ -1,0 +1,154 @@
+{
+    "version": "1.17",
+    "alias": "SublayerModelInfo",
+    "color": "#2e8142",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "./ModelPayload.nxt"
+    ],
+    "meta_data": {
+        "positions": {
+            "/DefinePrim_CreateAsset2": [
+                1688.7077158182638,
+                -529.3148811859517
+            ],
+            "/OpenOrFind_Sublayer2": [
+                1470.922439839134,
+                -743.6713069469265
+            ],
+            "/RootLayerSave2": [
+                1921.6610233762297,
+                -748.9852255354529
+            ],
+            "/RootLayerSave3": [
+                1903.0008803817261,
+                -562.5405782767992
+            ],
+            "/print_stage2": [
+                1215.4741456676115,
+                -160.6833010128035
+            ]
+        },
+        "collapse": {
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/ModelApi2": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/RootPath_CreateAsset/CreateClass2": true
+        }
+    },
+    "nodes": {
+        "/": {
+            "child_order": [
+                "OpenOrFind_Payload2",
+                "OpenOrFind_Sublayer2",
+                "RootLayerSave2",
+                "DefinePrim_CreateAsset2"
+            ],
+            "code": [
+                "from pxr import Usd, Sdf, UsdGeom, Kind",
+                "try:",
+                "  del Sdf",
+                "  del Usd",
+                "except NameError:",
+                "  pass",
+                "from pxr import Sdf, Usd"
+            ]
+        },
+        "/OpenOrFind_Payload2": {
+            "code": [
+                "if Usd.Stage.IsSupportedFile('${directory}'):",
+                "    self.payload_layer = Sdf.Layer.FindOrOpen('${directory}')",
+                "    if not self.payload_layer:",
+                "        if Sdf.Layer.GetLoadedLayers():",
+                "            for layer in Sdf.Layer.GetLoadedLayers():",
+                "                temp_stage = Usd.Stage.Open(layer)",
+                "                temp_stage = None",
+                "        self.payload_layer = Sdf.Layer.CreateNew('${directory}')",
+                "    STAGE.payload_layer = self.payload_layer",
+                "else:",
+                "    print('File is not a supported type: ${directory}')"
+            ]
+        },
+        "/OpenOrFind_Sublayer2": {
+            "instance": "/OpenOrFind_Sublayer",
+            "execute_in": "/OpenOrFind_Payload2",
+            "child_order": [
+                "StageOpen"
+            ],
+            "attrs": {
+                "name": {
+                    "type": "raw",
+                    "value": "foo_${sub_name}"
+                },
+                "path": {
+                    "type": "raw",
+                    "value": "${path::}/asset/model/geom/"
+                },
+                "sub_name": {
+                    "type": "raw",
+                    "value": "geom"
+                }
+            }
+        },
+        "/OpenOrFind_Sublayer2/StageOpen": {
+            "child_order": [
+                "AddSublayer",
+                "DefinePrim_CreateAsset2"
+            ],
+            "code": [
+                "self.sub_stage = Usd.Stage.Open(self.sub_layer)",
+                "STAGE.sub_stage = self.sub_stage"
+            ]
+        },
+        "/OpenOrFind_Sublayer2/StageOpen/AddSublayer": {
+            "code": [
+                "# self.payload_layer.RemoveSubLayerPath(self.sub_stage.GetRootLayer().identifier)",
+                "STAGE.payload_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier)"
+            ]
+        },
+        "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2": {
+            "instance": "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset",
+            "child_order": [
+                "RootPath_CreateAsset"
+            ],
+            "attrs": {
+                "prim_name": {
+                    "value": "/foo"
+                }
+            },
+            "code": [
+                "self.prim = self.sub_stage.DefinePrim('${prim_name}', '${type_usdgeom}')",
+                "STAGE.prim = self.prim",
+                ""
+            ]
+        },
+        "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2/ModelApi2/SetAssetName2": {
+            "attrs": {
+                "asset_name": {
+                    "value": "foo"
+                }
+            },
+            "code": [
+                "self.model.SetAssetName('${asset_name}')"
+            ]
+        },
+        "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2/RootPath_CreateAsset": {
+            "enabled": false
+        },
+        "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2/RootPath_CreateAsset/CreateClass2": {
+            "enabled": false
+        },
+        "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2/RootPath_CreateAsset/CreateClass2/InheriteClass2": {
+            "enabled": false
+        },
+        "/RootLayerSave2": {
+            "execute_in": "/OpenOrFind_Sublayer2"
+        },
+        "/RootLayerSave2/RootLayerSave3/RootLayerSave3": {
+            "instance": "/RootLayerSave",
+            "code": [
+                "STAGE.sub_stage.GetRootLayer().Save()",
+                "STAGE.sub_stage = None"
+            ]
+        }
+    }
+}

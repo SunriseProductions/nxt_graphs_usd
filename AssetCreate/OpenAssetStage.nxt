@@ -5,7 +5,7 @@
     "mute": false,
     "solo": false,
     "references": [
-        "../pxr_usd_tools.nxt"
+        "../graphs/pxr_usd_tools.nxt"
     ],
     "meta_data": {
         "positions": {
@@ -14,16 +14,16 @@
                 0
             ],
             "/OpenOrFind_CreateAsset": [
-                481.6146666218417,
-                -375.1784072774756
+                445.44853385950057,
+                -505.3542241499506
             ],
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": [
                 0.0,
                 0.0
             ],
             "/RootLayerSave2": [
-                901.6551198719019,
-                -377.44115613586314
+                934.0821582418333,
+                -504.62746473850996
             ],
             "/StageOpen2": [
                 320,
@@ -32,6 +32,10 @@
             "/StageOpen_CreateAsset": [
                 431.93258833502614,
                 -410.94248206457667
+            ],
+            "/node": [
+                948.1987240541414,
+                -284.57209630569133
             ]
         },
         "collapse": {
@@ -50,7 +54,15 @@
                     "type": "raw",
                     "value": "${path::}/foo.usda"
                 }
-            }
+            },
+            "code": [
+                "from pxr import Usd, Sdf, UsdGeom, Kind",
+                "try:",
+                "  del Sdf",
+                "except NameError:",
+                "  pass",
+                "from pxr import Sdf"
+            ]
         },
         "/OpenOrFind_CreateAsset": {
             "start_point": true,
@@ -67,7 +79,19 @@
                     "type": "raw",
                     "value": "${path::}/"
                 }
-            }
+            },
+            "code": [
+                "if Usd.Stage.IsSupportedFile('${directory}'):",
+                "    self.root_layer = Sdf.Layer.FindOrOpen('${directory}')",
+                "    if not self.root_layer:",
+                "        if Sdf.Layer.GetLoadedLayers():",
+                "            for layer in Sdf.Layer.GetLoadedLayers():",
+                "                temp_stage = Usd.Stage.Open(layer)",
+                "                temp_stage = None",
+                "        self.root_layer = Sdf.Layer.CreateNew('${directory}')",
+                "else:",
+                "    print('File is not a supported type: ${directory}')"
+            ]
         },
         "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": {
             "instance": "/StageOpen",
@@ -79,6 +103,11 @@
         "/RootLayerSave2": {
             "instance": "/RootLayerSave",
             "execute_in": "/OpenOrFind_CreateAsset",
+            "attrs": {
+                "stage": {
+                    "value": "${/OpenOrFind_CreateAsset/StageOpen_CreateAsset.stage}"
+                }
+            },
             "code": [
                 "STAGE.stage.GetRootLayer().Save()",
                 "STAGE.stage = None"
