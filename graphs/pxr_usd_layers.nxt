@@ -18,9 +18,17 @@
                 2427.8331737147473,
                 320.4071437989132
             ],
+            "/OpenOrFind_Payload": [
+                0,
+                0
+            ],
             "/OpenOrFind_Sublayer": [
-                2446.133375712021,
-                377.65962689826443
+                0,
+                160
+            ],
+            "/OpenOrFind_ref": [
+                0,
+                -155
             ],
             "/StageOpen2": [
                 320,
@@ -149,8 +157,11 @@
         },
         "/OpenOrFind_Sublayer/StageOpen/AddSublayer": {
             "code": [
-                "self.root_layer.RemoveSubLayerPath(self.sub_stage.GetRootLayer().identifier)",
-                "self.root_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier)"
+                "if not self.stage.HasLocalLayer(self.sub_layer):",
+                "    self.root_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier)",
+                "else:",
+                "    print('Does {} Hava {} as a local Layer? {}.'.format(self.stage, self.sub_layer, self.stage.HasLocalLayer(self.sub_layer)))",
+                ""
             ]
         },
         "/OpenOrFind_ref": {

@@ -1,0 +1,135 @@
+{
+    "version": "1.17",
+    "alias": "addingSublayersExample",
+    "color": "#00a5e6",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "../graphs/pxr_usd_tools.nxt"
+    ],
+    "meta_data": {
+        "positions": {
+            "/DefinePrim2": [
+                403.438283645052,
+                -336.90174905737996
+            ],
+            "/OpenOrFind2": [
+                312.1284638070706,
+                -459.0394265090231
+            ],
+            "/OpenOrFind_Sublayer2": [
+                728.6205513375044,
+                -455.01353705849624
+            ],
+            "/RootLayerSave2": [
+                1168.3987246552038,
+                -453.003655202183
+            ],
+            "/RootLayerSave3": [
+                1219.8937052864924,
+                -332.75139335012165
+            ],
+            "/StageOpen2": [
+                439.64735013252755,
+                -393.5768096464721
+            ],
+            "/node": [
+                479.20056607185194,
+                -541.9322765394401
+            ]
+        }
+    },
+    "nodes": {
+        "/OpenOrFind2": {
+            "start_point": true,
+            "instance": "/OpenOrFind",
+            "child_order": [
+                "StageOpen2"
+            ],
+            "attrs": {
+                "path": {
+                    "type": "raw",
+                    "value": "${path::}/tests/"
+                }
+            },
+            "code": [
+                "if Usd.Stage.IsSupportedFile('${directory}'):",
+                "    self.root_layer = Sdf.Layer.FindOrOpen('${directory}')",
+                "    if not self.root_layer:",
+                "        if Sdf.Layer.GetLoadedLayers():",
+                "            for layer in Sdf.Layer.GetLoadedLayers():",
+                "                temp_stage = Usd.Stage.Open(layer)",
+                "                temp_stage = None",
+                "        self.root_layer = Sdf.Layer.CreateNew('${directory}')",
+                "    STAGE.root_layer = self.root_layer",
+                "else:",
+                "    print('File is not a supported type: ${directory}')"
+            ]
+        },
+        "/OpenOrFind2/StageOpen2": {
+            "instance": "/StageOpen",
+            "child_order": [
+                "DefinePrim2"
+            ],
+            "code": [
+                "self.stage = Usd.Stage.Open(self.root_layer)",
+                "STAGE.stage = self.stage"
+            ]
+        },
+        "/OpenOrFind2/StageOpen2/DefinePrim2": {
+            "instance": "/DefinePrim",
+            "code": [
+                "self.prim = self.stage.DefinePrim('${prim_name}', '${type_usdgeom}')",
+                "STAGE.prim = self.prim"
+            ]
+        },
+        "/OpenOrFind_Sublayer2": {
+            "instance": "/OpenOrFind_Sublayer",
+            "execute_in": "/OpenOrFind2",
+            "child_order": [
+                "StageOpen"
+            ],
+            "attrs": {
+                "name": {
+                    "value": "HelloWorldsub"
+                }
+            }
+        },
+        "/OpenOrFind_Sublayer2/StageOpen": {
+            "child_order": [
+                "AddSublayer"
+            ],
+            "code": [
+                "self.sub_stage = Usd.Stage.Open(self.sub_layer)",
+                "STAGE.sub_stage = self.sub_stage"
+            ]
+        },
+        "/OpenOrFind_Sublayer2/StageOpen/AddSublayer": {
+            "code": [
+                "if not STAGE.stage.HasLocalLayer(self.sub_layer):",
+                "    STAGE.root_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier)",
+                "else:",
+                "    print('Does {} Hava {} as a local Layer? {}.'.format(STAGE.stage, self.sub_layer, STAGE.stage.HasLocalLayer(self.sub_layer)))",
+                ""
+            ]
+        },
+        "/RootLayerSave2": {
+            "instance": "/RootLayerSave",
+            "execute_in": "/OpenOrFind_Sublayer2",
+            "child_order": [
+                "RootLayerSave3"
+            ],
+            "code": [
+                "STAGE.stage.GetRootLayer().Save()",
+                "STAGE.stage = None"
+            ]
+        },
+        "/RootLayerSave2/RootLayerSave3": {
+            "instance": "/RootLayerSave",
+            "code": [
+                "STAGE.sub_stage.GetRootLayer().Save()",
+                "STAGE.sub_stage = None"
+            ]
+        }
+    }
+}
