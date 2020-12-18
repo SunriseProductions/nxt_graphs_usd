@@ -17,13 +17,21 @@
                 1470.922439839134,
                 -743.6713069469265
             ],
+            "/OpenOrFind_Sublayer22": [
+                1853.5942792867827,
+                -743.6713069469263
+            ],
             "/RootLayerSave2": [
-                1921.6610233762297,
-                -748.9852255354529
+                2249.024841009395,
+                -744.9962269452844
             ],
             "/RootLayerSave3": [
                 1903.0008803817261,
                 -562.5405782767992
+            ],
+            "/UsdView2": [
+                199.4713385670779,
+                -631.9566326876218
             ],
             "/print_stage2": [
                 1215.4741456676115,
@@ -41,8 +49,15 @@
                 "OpenOrFind_Payload2",
                 "OpenOrFind_Sublayer2",
                 "RootLayerSave2",
-                "DefinePrim_CreateAsset2"
+                "DefinePrim_CreateAsset2",
+                "UsdView2",
+                "OpenOrFind_Sublayer22"
             ],
+            "attrs": {
+                "USD_file": {
+                    "value": "${path::}/asset/foo.usda"
+                }
+            },
             "code": [
                 "from pxr import Usd, Sdf, UsdGeom, Kind",
                 "try:",
@@ -101,8 +116,11 @@
         },
         "/OpenOrFind_Sublayer2/StageOpen/AddSublayer": {
             "code": [
-                "# self.payload_layer.RemoveSubLayerPath(self.sub_stage.GetRootLayer().identifier)",
-                "STAGE.payload_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier)"
+                "if not STAGE.pay_stage.HasLocalLayer(self.sub_layer):",
+                "    STAGE.payload_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier, position=Usd.ListPositionBackOfPrependList)",
+                "else:",
+                "    print('Does {} Have {} as a local Layer? {}.'.format(STAGE.pay_stage, self.sub_layer, STAGE.pay_stage.HasLocalLayer(self.sub_layer)))",
+                ""
             ]
         },
         "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2": {
@@ -132,16 +150,43 @@
             ]
         },
         "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2/RootPath_CreateAsset": {
+            "child_order": [
+                "CreateClass2"
+            ],
             "enabled": false
         },
         "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2/RootPath_CreateAsset/CreateClass2": {
+            "child_order": [
+                "InheriteClass2"
+            ],
             "enabled": false
         },
         "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2/RootPath_CreateAsset/CreateClass2/InheriteClass2": {
             "enabled": false
         },
+        "/OpenOrFind_Sublayer22": {
+            "instance": "/OpenOrFind_Sublayer2",
+            "execute_in": "/OpenOrFind_Sublayer2",
+            "attrs": {
+                "path": {
+                    "value": "${path::}/asset/model/uv/"
+                },
+                "sub_name": {
+                    "value": "uv"
+                }
+            }
+        },
+        "/OpenOrFind_Sublayer22/StageOpen/AddSublayer": {
+            "code": [
+                "if not STAGE.pay_stage.HasLocalLayer(self.sub_layer):",
+                "    STAGE.payload_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier, position=Usd.ListPositionFrontOfPrependList)",
+                "else:",
+                "    print('Does {} Have {} as a local Layer? {}.'.format(STAGE.pay_stage, self.sub_layer, STAGE.pay_stage.HasLocalLayer(self.sub_layer)))",
+                ""
+            ]
+        },
         "/RootLayerSave2": {
-            "execute_in": "/OpenOrFind_Sublayer2"
+            "execute_in": "/OpenOrFind_Sublayer22"
         },
         "/RootLayerSave2/RootLayerSave3/RootLayerSave3": {
             "instance": "/RootLayerSave",
@@ -149,6 +194,9 @@
                 "STAGE.sub_stage.GetRootLayer().Save()",
                 "STAGE.sub_stage = None"
             ]
+        },
+        "/UsdView2": {
+            "instance": "/UsdView"
         }
     }
 }

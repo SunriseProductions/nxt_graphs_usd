@@ -6,6 +6,10 @@
     "solo": false,
     "meta_data": {
         "positions": {
+            "/FindAllVariants": [
+                3071.1357713097223,
+                59.58111725644964
+            ],
             "/ListModules": [
                 2982.850671172257,
                 -33.181594117255784
@@ -13,6 +17,35 @@
         }
     },
     "nodes": {
+        "/FindAllVariants": {
+            "attrs": {
+                "prim": {},
+                "variant_options": {},
+                "variant_set_names": {},
+                "variant_set_selection": {}
+            },
+            "code": [
+                "vsets = self.prim.GetVariantSets()",
+                "self.variant_set_names = vsets.GetNames()",
+                "self.variant_set_selection = {}",
+                "self.variant_options = {}",
+                "",
+                "for vset_name in variant_set_names:",
+                "    logging.debug('  variant set:', vset_name)",
+                "    vset = vsets.GetVariantSet(vset_name)",
+                "    selection = vset.GetVariantSelection()",
+                "    variant_set_selection[vset_name] = selection",
+                "    logging.debug('    has selection:', selection)",
+                "    logging.debug('    has options:')",
+                "    opt_list = []",
+                "    for opt in vset.GetVariantNames():",
+                "        opt_list.append(opt)",
+                "        logging.debug('      ', opt)",
+                "    variant_options[vset_name] = opt_list",
+                "",
+                ""
+            ]
+        },
         "/ListModules": {
             "start_point": true,
             "attrs": {
