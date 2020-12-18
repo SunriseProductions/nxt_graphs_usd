@@ -6,26 +6,39 @@
     "solo": false,
     "meta_data": {
         "positions": {
-            "/node": [
+            "/ListModules": [
                 2982.850671172257,
                 -33.181594117255784
             ]
         }
     },
     "nodes": {
-        "/node": {
+        "/ListModules": {
             "start_point": true,
             "attrs": {
                 "module": {
+                    "comment": "Helps you find useful attrs and modules",
                     "type": "raw",
-                    "value": "Sdf"
+                    "value": "UsdGeom"
                 }
             },
             "code": [
                 "list = dir(${module})",
-                "",
+                "print('Module: ', '${module}')",
                 "for item in list:",
-                "    print(item)"
+                "    if not '__' in item:",
+                "        print('Main Attribute: ', item)",
+                "        # print(dir(getattr(${module}, item)))",
+                "        sub_list = dir(getattr(${module}, item))",
+                "        new_list = []",
+                "        for sub_item in sub_list:",
+                "            if not '__' in sub_item:",
+                "                new_list.append(sub_item)",
+                "            else:",
+                "                pass",
+                "        print('Sub List: ', new_list)",
+                "                ",
+                "    "
             ]
         }
     }
