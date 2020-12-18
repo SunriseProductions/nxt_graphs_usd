@@ -14,12 +14,12 @@
                 -529.3148811859517
             ],
             "/OpenOrFind_Sublayer2": [
-                1470.922439839134,
+                1854.536318175356,
                 -743.6713069469265
             ],
             "/OpenOrFind_Sublayer22": [
-                1853.5942792867827,
-                -743.6713069469263
+                1458.0545808986578,
+                -745.6589436222439
             ],
             "/RootLayerSave2": [
                 2249.024841009395,
@@ -85,7 +85,7 @@
         },
         "/OpenOrFind_Sublayer2": {
             "instance": "/OpenOrFind_Sublayer",
-            "execute_in": "/OpenOrFind_Payload2",
+            "execute_in": "/OpenOrFind_Sublayer22",
             "child_order": [
                 "StageOpen"
             ],
@@ -117,7 +117,7 @@
         "/OpenOrFind_Sublayer2/StageOpen/AddSublayer": {
             "code": [
                 "if not STAGE.pay_stage.HasLocalLayer(self.sub_layer):",
-                "    STAGE.payload_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier, position=Usd.ListPositionBackOfPrependList)",
+                "    STAGE.payload_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier)",
                 "else:",
                 "    print('Does {} Have {} as a local Layer? {}.'.format(STAGE.pay_stage, self.sub_layer, STAGE.pay_stage.HasLocalLayer(self.sub_layer)))",
                 ""
@@ -166,7 +166,7 @@
         },
         "/OpenOrFind_Sublayer22": {
             "instance": "/OpenOrFind_Sublayer2",
-            "execute_in": "/OpenOrFind_Sublayer2",
+            "execute_in": "/OpenOrFind_Payload2",
             "attrs": {
                 "path": {
                     "value": "${path::}/asset/model/uv/"
@@ -179,14 +179,14 @@
         "/OpenOrFind_Sublayer22/StageOpen/AddSublayer": {
             "code": [
                 "if not STAGE.pay_stage.HasLocalLayer(self.sub_layer):",
-                "    STAGE.payload_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier, position=Usd.ListPositionFrontOfPrependList)",
+                "    STAGE.payload_layer.subLayerPaths.append(self.sub_stage.GetRootLayer().identifier)",
                 "else:",
                 "    print('Does {} Have {} as a local Layer? {}.'.format(STAGE.pay_stage, self.sub_layer, STAGE.pay_stage.HasLocalLayer(self.sub_layer)))",
                 ""
             ]
         },
         "/RootLayerSave2": {
-            "execute_in": "/OpenOrFind_Sublayer22"
+            "execute_in": "/OpenOrFind_Sublayer2"
         },
         "/RootLayerSave2/RootLayerSave3/RootLayerSave3": {
             "instance": "/RootLayerSave",
