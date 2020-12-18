@@ -273,7 +273,7 @@
             },
             "code": [
                 "self.stage.GetRootLayer().Save()",
-                "Self.stage = None"
+                "self.stage = None"
             ]
         },
         "/RootPath": {
