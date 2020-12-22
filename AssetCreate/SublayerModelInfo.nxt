@@ -7,8 +7,20 @@
     "references": [
         "./ModelPayload.nxt"
     ],
+    "comp_overrides": {
+        "../graphs/pxr_usd_helpers.nxt": {
+            "solo": false
+        },
+        "./OpenAssetStage.nxt": {
+            "mute": false
+        }
+    },
     "meta_data": {
         "positions": {
+            "/BatchNamespaceEdit": [
+                2914.2598795776007,
+                145.97522492185348
+            ],
             "/DefinePrim2": [
                 1133.7715043272117,
                 -535.371044071058
