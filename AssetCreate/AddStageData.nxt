@@ -5,7 +5,7 @@
     "mute": false,
     "solo": false,
     "references": [
-        "E:/Sandbox/nxt_graphs_usd/AssetCreate/OpenAssetStage.nxt"
+        "./OpenAssetStage.nxt"
     ],
     "meta_data": {
         "positions": {
@@ -53,10 +53,22 @@
     },
     "nodes": {
         "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageAxis_CreateAsset": {
-            "instance": "/SetStageAxis"
+            "instance": "/SetStageAxis",
+            "attrs": {
+                "axis": {
+                    "type": "raw",
+                    "value": "y"
+                }
+            }
         },
         "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageMetersPerUnit22": {
-            "instance": "/SetStageMetersPerUnit"
+            "instance": "/SetStageMetersPerUnit",
+            "attrs": {
+                "meters": {
+                    "type": "float",
+                    "value": "0.01"
+                }
+            }
         },
         "/RootLayerSave2": {
             "code": [
