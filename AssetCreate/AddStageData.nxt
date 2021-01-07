@@ -1,0 +1,80 @@
+{
+    "version": "1.17",
+    "alias": "AddStageData",
+    "color": "#99cc33",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "./OpenAssetStage.nxt"
+    ],
+    "meta_data": {
+        "positions": {
+            "/AssetCreateDocumentation": [
+                280,
+                20
+            ],
+            "/CreateClass2": [
+                916.0354791139604,
+                -1104.3255229791614
+            ],
+            "/RootLayerSave2": [
+                907.3843908057692,
+                -381.9173387617135
+            ],
+            "/RootLayerSave_CreateAsset": [
+                556.6329027819588,
+                -204.0051798136837
+            ],
+            "/RootPath2": [
+                320,
+                0
+            ],
+            "/SetStageAxis2": [
+                759.7070785693213,
+                -207.96956418819252
+            ],
+            "/SetStageMetersPerUnit2": [
+                320,
+                0
+            ],
+            "/node": [
+                723.3423479223977,
+                -149.37313526202357
+            ],
+            "/print_stage": [
+                39.479494697432926,
+                1385.2153139490615
+            ]
+        },
+        "collapse": {
+            "/AssetCreateDocumentation": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset": false
+        }
+    },
+    "nodes": {
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageAxis_CreateAsset": {
+            "instance": "/SetStageAxis",
+            "attrs": {
+                "axis": {
+                    "type": "raw",
+                    "value": "y"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/SetStageMetersPerUnit22": {
+            "instance": "/SetStageMetersPerUnit",
+            "attrs": {
+                "meters": {
+                    "type": "float",
+                    "value": "0.01"
+                }
+            }
+        },
+        "/RootLayerSave2": {
+            "code": [
+                "STAGE.stage.GetRootLayer().Save()",
+                "STAGE.stage = None"
+            ]
+        }
+    }
+}

@@ -1,0 +1,128 @@
+{
+    "version": "1.17",
+    "alias": "ModelPayload",
+    "color": "#5633bb",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "./AddAssetPrim.nxt"
+    ],
+    "meta_data": {
+        "positions": {
+            "/OpenOrFind_Payload2": [
+                1076.4244874353292,
+                -743.2293829271923
+            ],
+            "/RootLayerSave2": [
+                1532.6427316437337,
+                -745.5425857856078
+            ],
+            "/RootLayerSave3": [
+                280,
+                20
+            ],
+            "/print_stage2": [
+                1103.5165032661848,
+                -441.1387176819756
+            ]
+        }
+    },
+    "nodes": {
+        "/": {
+            "child_order": [
+                "OpenOrFind_CreateAsset",
+                "OpenOrFind_Payload2",
+                "RootLayerSave2",
+                "print_stage2"
+            ],
+            "code": [
+                "from pxr import Usd, Sdf, UsdGeom, Kind",
+                "try:",
+                "  del Sdf",
+                "  del Usd",
+                "except NameError:",
+                "  pass",
+                "from pxr import Sdf, Usd"
+            ]
+        },
+        "/OpenOrFind_CreateAsset": {
+            "attrs": {
+                "path": {
+                    "value": "${path::}/asset/"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset": {
+            "code": [
+                "self.prim = self.stage.DefinePrim('${prim_name}', '${type_usdgeom}')",
+                "STAGE.prim = self.prim",
+                ""
+            ]
+        },
+        "/OpenOrFind_Payload2": {
+            "instance": "/OpenOrFind_Payload",
+            "execute_in": "/OpenOrFind_CreateAsset",
+            "child_order": [
+                "StageOpen_Payload"
+            ],
+            "attrs": {
+                "name": {
+                    "type": "raw",
+                    "value": "foo_${payload_name}"
+                },
+                "path": {
+                    "type": "raw",
+                    "value": "${path::}/asset/model/"
+                },
+                "payload_name": {
+                    "type": "raw",
+                    "value": "model"
+                }
+            },
+            "code": [
+                "if Usd.Stage.IsSupportedFile('${directory}'):",
+                "    self.payload_layer = Sdf.Layer.FindOrOpen('${directory}')",
+                "    if not self.payload_layer:",
+                "        if Sdf.Layer.GetLoadedLayers():",
+                "            for layer in Sdf.Layer.GetLoadedLayers():",
+                "                temp_stage = Usd.Stage.Open(layer)",
+                "                temp_stage = None",
+                "        self.payload_layer = Sdf.Layer.CreateNew('${directory}')",
+                "else:",
+                "    print('File is not a supported type: ${directory}')"
+            ]
+        },
+        "/OpenOrFind_Payload2/StageOpen_Payload": {
+            "child_order": [
+                "AddPayload"
+            ],
+            "code": [
+                "self.pay_stage = Usd.Stage.Open(self.payload_layer)",
+                "STAGE.pay_stage = self.pay_stage"
+            ]
+        },
+        "/OpenOrFind_Payload2/StageOpen_Payload/AddPayload": {
+            "code": [
+                "self.payload = STAGE.prim.GetPayloads().AddPayload(assetPath=self.pay_stage.GetRootLayer().identifier,",
+                "                                                  primPath=STAGE.prim.GetPath(),",
+                "                                                  position=Usd.ListPosition${position}OfPrependList)"
+            ]
+        },
+        "/RootLayerSave2": {
+            "execute_in": "/OpenOrFind_Payload2",
+            "child_order": [
+                "RootLayerSave3"
+            ]
+        },
+        "/RootLayerSave2/RootLayerSave3": {
+            "instance": "/RootLayerSave",
+            "code": [
+                "STAGE.pay_stage.GetRootLayer().Save()",
+                "STAGE.pay_stage = None"
+            ]
+        },
+        "/print_stage2": {
+            "instance": "/print_stage"
+        }
+    }
+}

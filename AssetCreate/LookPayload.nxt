@@ -1,0 +1,123 @@
+{
+    "version": "1.17",
+    "alias": "LookPayload",
+    "color": "#cfa305",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "./ModelPayload.nxt"
+    ],
+    "comp_overrides": {
+        "./AddAssetPrim.nxt": {
+            "solo": false
+        },
+        "./AddStageData.nxt": {
+            "solo": false
+        },
+        "./ModelPayload.nxt": {
+            "solo": false
+        }
+    },
+    "meta_data": {
+        "positions": {
+            "/CreateClass": [
+                2514.0529445083203,
+                -53.84598697226359
+            ],
+            "/CreateClass2": [
+                1053.6338280780276,
+                -1021.5778072935706
+            ],
+            "/DefinePrim_CreateAsset": [
+                1002.83031606691,
+                -979.3409577669133
+            ],
+            "/DefinePrim_model": [
+                1340.8723948959148,
+                -996.0579557260962
+            ],
+            "/InheriteClass2": [
+                1182.1456824341399,
+                -915.0759703987646
+            ],
+            "/OpenOrFind_CreateAsset": [
+                621.7871409613186,
+                -1563.161633483062
+            ],
+            "/OpenOrFind_Sublayer2": [
+                1184.7768692115294,
+                -1534.5932229395041
+            ],
+            "/RootLayerSave2": [
+                1888.815312140359,
+                -1569.3324124476603
+            ],
+            "/RootPath2": [
+                998.8286412765094,
+                -1000.6830718467206
+            ],
+            "/RootPath_CreateAsset": [
+                1003.5980648183668,
+                -923.8393769353854
+            ],
+            "/SetDefaultPrim2": [
+                1559.3782655873292,
+                -1031.4872074171776
+            ],
+            "/print_stage2": [
+                780.5536536808424,
+                -741.3680400287101
+            ]
+        },
+        "collapse": {
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look/StageOpen_Payload": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look/StageOpen_Payload/DefinePrim_model/ModelApi2/SetKind2": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/AddPayload": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/DefinePrim_model/ModelApi2": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/OpenOrFind_Sublayer2/StageOpen": false,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/OpenOrFind_Sublayer2/StageOpen/DefinePrim_model": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/OpenOrFind_Sublayer2/StageOpen/RootLayerSave2": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model/StageOpen_Payload/RootLayerSave_modelPayLoad": true,
+            "/OpenOrFind_Sublayer2": false,
+            "/OpenOrFind_Sublayer2/StageOpen/AddSublayer": true,
+            "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_model": true,
+            "/OpenOrFind_Sublayer2/StageOpen/SetDefaultPrim2": true
+        }
+    },
+    "nodes": {
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look": {
+            "instance": "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_model",
+            "attrs": {
+                "payload_name": {
+                    "value": "look"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look/StageOpen_Payload/AddPayload": {
+            "attrs": {
+                "position": {
+                    "value": "Front"
+                }
+            }
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look/StageOpen_Payload/DefinePrim_model": {
+            "code": [
+                "self.prim = self.pay_stage.DefinePrim('${prim_name}', '${type_usdgeom}')"
+            ]
+        },
+        "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/OpenOrFind_Payload_look/StageOpen_Payload/DefinePrim_model/ModelApi2/SetKind2": {
+            "attrs": {
+                "kind": {
+                    "value": "Kind.Tokens.group"
+                }
+            },
+            "code": [
+                "self.model.SetKind(${kind})"
+            ]
+        }
+    }
+}
