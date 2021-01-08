@@ -5,7 +5,7 @@
     "mute": false,
     "solo": false,
     "references": [
-        "./ModelPayload.nxt"
+        "./SublayerModelInfo.nxt"
     ],
     "comp_overrides": {
         "./AddAssetPrim.nxt": {
