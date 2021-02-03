@@ -61,23 +61,7 @@
         }
     },
     "nodes": {
-        "/": {
-            "child_order": [
-                "Cube",
-                "Cone",
-                "DefinePrim",
-                "Cylinder",
-                "Capsule",
-                "Points",
-                "Mesh",
-                "BasisCurves",
-                "NurbsPatch",
-                "NurbsCurves",
-                "Sphere",
-                "Xform",
-                "Purpose"
-            ]
-        },
+        "/": {},
         "/BasisCurves": {
             "attrs": {
                 "basis_curves": {

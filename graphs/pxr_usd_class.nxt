@@ -6,6 +6,10 @@
     "solo": false,
     "meta_data": {
         "positions": {
+            "/AddSpecializer": [
+                2646.965964004999,
+                185.67624217327074
+            ],
             "/CreateClass": [
                 2577.7424321832054,
                 98.74831344357052
@@ -13,10 +17,23 @@
             "/InheriteClass": [
                 2648.840450193574,
                 83.67511787383451
+            ],
+            "/RemoveSpecializer": [
+                2621.0576511436125,
+                259.08312861386617
             ]
         }
     },
     "nodes": {
+        "/AddSpecializer": {
+            "attrs": {
+                "prim": {},
+                "specialize_prim": {}
+            },
+            "code": [
+                "self.prim.GetSpecializes().AddSpecialize(self.specialize_prim.GetPath())"
+            ]
+        },
         "/CreateClass": {
             "attrs": {
                 "class_name": {
@@ -38,6 +55,15 @@
             },
             "code": [
                 "self.prim.GetInherits().AddInherit(self.class_prim.GetPath())"
+            ]
+        },
+        "/RemoveSpecializer": {
+            "attrs": {
+                "prim": {},
+                "specialize_prim": {}
+            },
+            "code": [
+                "self.prim.GetSpecializes().RemoveSpecialize(self.specialize_prim.GetPath())"
             ]
         }
     }

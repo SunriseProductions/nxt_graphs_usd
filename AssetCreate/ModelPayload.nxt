@@ -29,12 +29,6 @@
     },
     "nodes": {
         "/": {
-            "child_order": [
-                "OpenOrFind_CreateAsset",
-                "OpenOrFind_Payload2",
-                "RootLayerSave2",
-                "print_stage2"
-            ],
             "code": [
                 "from pxr import Usd, Sdf, UsdGeom, Kind",
                 "try:",
