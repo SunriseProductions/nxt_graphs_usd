@@ -46,8 +46,8 @@
                 -541.6017584104652
             ],
             "/UsdView2": [
-                199.4713385670779,
-                -631.9566326876218
+                117.60706554994806,
+                -729.8727239434046
             ],
             "/print_stage2": [
                 1215.4741456676115,
@@ -57,7 +57,7 @@
         "collapse": {
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset": false,
             "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/ModelApi2": true,
-            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/RootPath_CreateAsset/CreateClass2": true,
+            "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset/RootPath_CreateAsset/CreateClass2": false,
             "/OpenOrFind_Sublayer2/StageOpen/DefinePrim_CreateAsset2/ModelApi2": false,
             "/OpenOrFind_Sublayer22/StageOpen/DefinePrim_CreateAsset2": false,
             "/OpenOrFind_Sublayer22/StageOpen/DefinePrim_CreateAsset2/SetDefaultPrim2": true
@@ -65,16 +65,6 @@
     },
     "nodes": {
         "/": {
-            "child_order": [
-                "OpenOrFind_Payload2",
-                "OpenOrFind_Sublayer2",
-                "RootLayerSave2",
-                "DefinePrim_CreateAsset2",
-                "UsdView2",
-                "OpenOrFind_Sublayer22",
-                "RootLayerSave3",
-                "DefinePrim2"
-            ],
             "attrs": {
                 "USD_file": {
                     "value": "${path::}/asset/foo.usda"
@@ -91,8 +81,15 @@
             ]
         },
         "/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset": {
+            "attrs": {
+                "prim_name_asset": {
+                    "comment": "Name of the prim that will be made",
+                    "type": "raw",
+                    "value": "/${name}"
+                }
+            },
             "code": [
-                "self.prim = self.stage.DefinePrim('${prim_name}', '${type_usdgeom}')",
+                "self.prim = self.stage.DefinePrim('${prim_name_asset}', '${type_usdgeom}')",
                 "STAGE.prim = self.prim",
                 "STAGE.default_prim = self.prim"
             ]
@@ -117,15 +114,18 @@
             "attrs": {
                 "prim_model": {},
                 "prim_name": {
+                    "value": "${/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset.prim_name}"
+                },
+                "prim_name_model": {
                     "type": "raw",
-                    "value": "/foo/model"
+                    "value": "${/OpenOrFind_CreateAsset/StageOpen_CreateAsset/DefinePrim_CreateAsset.prim_name_asset}/model"
                 },
                 "type_usdgeom": {
                     "value": "Scope"
                 }
             },
             "code": [
-                "self.prim_model = STAGE.stage.DefinePrim('${prim_name}', '${type_usdgeom}')",
+                "self.prim_model = STAGE.stage.DefinePrim('${prim_name_model}', '${type_usdgeom}')",
                 "STAGE.prim_model = self.prim_model"
             ]
         },
@@ -284,12 +284,15 @@
             ],
             "attrs": {
                 "prim_name": {
+                    "value": "${/OpenOrFind_Payload2/StageOpen_Payload/DefinePrim2.prim_name}"
+                },
+                "prim_name_geo": {
                     "type": "raw",
-                    "value": "/foo/model/geom"
+                    "value": "${/OpenOrFind_Payload2/StageOpen_Payload/DefinePrim2.prim_name_model}/geom"
                 }
             },
             "code": [
-                "self.prim = self.sub_stage_uv.OverridePrim('${prim_name}')",
+                "self.prim = self.sub_stage_uv.OverridePrim('${prim_name_geo}')",
                 "STAGE.prim = self.prim",
                 ""
             ]

@@ -78,25 +78,6 @@
     },
     "nodes": {
         "/": {
-            "child_order": [
-                "RootLayerSave",
-                "CreateNew",
-                "GetPrimAtPath",
-                "GetPropertyNames",
-                "GetAttribute",
-                "SetAttribute",
-                "SetDefaultPrim",
-                "StageOpen",
-                "GetDefaultPrim",
-                "OpenOrFind",
-                "RootPath",
-                "SetStageAxis",
-                "GetStageAxis",
-                "GetStageMetersPerUnit",
-                "SetStageMetersPerUnit",
-                "HasStageMetersPerUnit",
-                "print_stage"
-            ],
             "code": [
                 "from pxr import Usd, Sdf, UsdGeom"
             ]

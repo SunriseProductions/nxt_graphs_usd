@@ -45,10 +45,6 @@
     },
     "nodes": {
         "/": {
-            "child_order": [
-                "OpenOrFind_CreateAsset",
-                "RootLayerSave2"
-            ],
             "attrs": {
                 "USD_file": {
                     "type": "raw",

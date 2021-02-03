@@ -275,13 +275,6 @@
     },
     "nodes": {
         "/": {
-            "child_order": [
-                "UsdCat",
-                "UsdEdit",
-                "UsdView",
-                "UsdDiff",
-                "UsdConvert"
-            ],
             "attrs": {
                 "USD_file": {
                     "comment": "USD file you want to inspect",
